@@ -1,0 +1,39 @@
+@font-face
+{
+    -fx-font-family: 'Voltage';
+    /*src: url("/font/voltage/Voltage-Regular.otf");*/
+}
+
+.root {
+    -fx-background-color: white;
+    -fx-background-repeat: stretch;
+    -fx-background-position: center center;
+    -fx-background-size: cover;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
+    -fx-box-border: red;
+    -fx-min-width: 640;
+    -fx-min-height: 640;
+    -fx-font-family: Voltage;
+}
+
+Text {
+    -fx-alignment: center center;
+    -fx-font-size: 20px;
+}
+
+.button {
+    -fx-background-color: white;
+    -fx-border-width: 1;
+    -fx-border-color: black;
+    -fx-border-radius: 5;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+    -fx-font-family: Voltage;
+    -fx-font-size: 16px;
+    -fx-padding: 5 10 5 10;
+}
+
+StackPane {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+
+}

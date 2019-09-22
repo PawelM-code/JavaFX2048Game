@@ -26,6 +26,10 @@ public class Board {
         return SIZE_OF_BOARD;
     }
 
+    public static void setSizeOfBoard(int sizeOfBoard) {
+        SIZE_OF_BOARD = sizeOfBoard;
+    }
+
     private void initBoard() {
         for (int row = 0; row < SIZE_OF_BOARD; row++) {
             for (int col = 0; col < SIZE_OF_BOARD; col++) {
