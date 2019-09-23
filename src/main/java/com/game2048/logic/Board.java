@@ -14,7 +14,7 @@ public class Board {
         initBoard();
     }
 
-    int[][] getBoard() {
+    public int[][] getBoard() {
         return board;
     }
 
@@ -38,6 +38,18 @@ public class Board {
         }
         setNewRandomNumberOnBoard();
         setNewRandomNumberOnBoard();
+    }
+
+    public void clearBoard(){
+        board  = null;
+    }
+
+    public void setSavedBoard(int[][] savedBoard) {
+        for (int row = 0; row < SIZE_OF_BOARD; row++) {
+            for (int col = 0; col < SIZE_OF_BOARD; col++) {
+                board[row][col] = savedBoard[row][col];
+            }
+        }
     }
 
     private void getBoardEmptyFields() {
@@ -82,7 +94,7 @@ public class Board {
         board[row][col] = number;
     }
 
-    int[][] getBoardCopy(int[][] board) {
+    public int[][] getBoardCopy(int[][] board) {
         return Arrays.stream(board).map(int[]::clone).toArray(int[][]::new);
     }
 
