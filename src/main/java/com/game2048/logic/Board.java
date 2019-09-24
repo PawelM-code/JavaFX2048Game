@@ -40,10 +40,6 @@ public class Board {
         setNewRandomNumberOnBoard();
     }
 
-    public void clearBoard(){
-        board  = null;
-    }
-
     public void setSavedBoard(int[][] savedBoard) {
         for (int row = 0; row < SIZE_OF_BOARD; row++) {
             for (int col = 0; col < SIZE_OF_BOARD; col++) {
@@ -98,7 +94,7 @@ public class Board {
         return Arrays.stream(board).map(int[]::clone).toArray(int[][]::new);
     }
 
-    private int getBoardSize(int[][] board) {
+    private int getSumOfBoardFields(int[][] board) {
         int size = 0;
         for (int i = 0; i < board.length; i++)
             for (int j = 0; j < board[i].length; j++)
@@ -108,24 +104,24 @@ public class Board {
 
     public boolean isEndOfGame() {
         int[][] boardCopy = getBoardCopy(board);
-        int size = getBoardSize(board);
+        int value = getSumOfBoardFields(board);
         gameMove.move(Move.DOWN, this);
-        if (size < getBoardSize(board)) {
+        if (value < getSumOfBoardFields(board)) {
             setBoard(boardCopy);
             return false;
         }
         gameMove.move(Move.UP, this);
-        if (size < getBoardSize(board)) {
+        if (value < getSumOfBoardFields(board)) {
             setBoard(boardCopy);
             return false;
         }
         gameMove.move(Move.LEFT, this);
-        if (size < getBoardSize(board)) {
+        if (value < getSumOfBoardFields(board)) {
             setBoard(boardCopy);
             return false;
         }
         gameMove.move(Move.RIGHT, this);
-        if (size < getBoardSize(board)) {
+        if (value < getSumOfBoardFields(board)) {
             setBoard(boardCopy);
             return false;
         } else {

@@ -125,7 +125,7 @@ public class Application extends javafx.application.Application implements NewGa
 
         Button loadSave = new Button();
         loadSave.setText("Load save");
-        loadSave.setOnAction(e -> getSave(board, stage));
+        loadSave.setOnAction(e -> getSave(board));
         loadSave.getStylesheets().add("/com/game2048/gui/style.css");
 
         GridPane setBottom = new GridPane();
@@ -204,7 +204,7 @@ public class Application extends javafx.application.Application implements NewGa
         newGame(stage);
     }
 
-    private void getSave(Board board, Stage stage) {
+    private void getSave(Board board) {
         try {
             int[][] saveBoard = save.readObjectFromFile();
             if (saveBoard.length == 3 && getSizeOfBoard() == 3) {

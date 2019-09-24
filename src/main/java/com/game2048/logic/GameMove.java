@@ -13,22 +13,19 @@ public class GameMove {
             if (!Arrays.deepEquals(boardState, board.getBoard())) {
                 board.setNewRandomNumberOnBoard();
             }
-        }
-        if (Move.DOWN.equals(move)) {
+        } else if (Move.DOWN.equals(move)) {
             int[][] boardState = board.getBoardCopy(board.getBoard());
             board.setBoard(MoveDown(board.getBoard()));
             if (!Arrays.deepEquals(boardState, board.getBoard())) {
                 board.setNewRandomNumberOnBoard();
             }
-        }
-        if (Move.LEFT.equals(move)) {
+        } else if (Move.LEFT.equals(move)) {
             int[][] boardState = board.getBoardCopy(board.getBoard());
             MoveLeft(board.getBoard());
             if (!Arrays.deepEquals(boardState, board.getBoard())) {
                 board.setNewRandomNumberOnBoard();
             }
-        }
-        if (Move.RIGHT.equals(move)) {
+        } else if (Move.RIGHT.equals(move)) {
             int[][] boardState = board.getBoardCopy(board.getBoard());
             MoveRight(board.getBoard());
             if (!Arrays.deepEquals(boardState, board.getBoard())) {
