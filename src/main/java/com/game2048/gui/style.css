@@ -1,7 +1,7 @@
 @font-face
 {
     -fx-font-family: 'Voltage';
-    /*src: url("/font/voltage/Voltage-Regular.otf");*/
+    src: url("/font/voltage/Voltage-Regular.otf");
 }
 
 .root {
@@ -27,9 +27,9 @@ Text {
     -fx-border-color: black;
     -fx-border-radius: 5;
     -fx-text-fill: black;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+    /*-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);*/
     -fx-font-family: Voltage;
-    -fx-font-size: 16px;
+    -fx-font-size: 18px;
     -fx-padding: 5 10 5 10;
 }
 

@@ -24,7 +24,6 @@ import static com.game2048.logic.Board.*;
 
 public class Application extends javafx.application.Application implements NewGame {
     private GridPane grid;
-    //    private Board board = new Board();
     private Save save = new Save();
 
 
@@ -41,50 +40,52 @@ public class Application extends javafx.application.Application implements NewGa
                 GridPane.setHalignment(fieldNumber, HPos.CENTER);
                 if (getSizeOfBoard() == 3) {
                     Rectangle rectangle = new Rectangle(160, 160);
-                    setRectangleFill(rectangle, gridNumber);
-                    rectangle.setStroke(Color.BLACK);
-                    rectangle.setStrokeWidth(1);
-                    grid.add(rectangle, col, row);
-                    grid.add(fieldNumber, col, row);
+                    setRectangleGrid(row, col, gridNumber, fieldNumber, rectangle);
                 } else {
                     Rectangle rectangle = new Rectangle(120, 120);
-                    setRectangleFill(rectangle, gridNumber);
-                    rectangle.setStroke(Color.BLACK);
-                    rectangle.setStrokeWidth(1);
-                    grid.add(rectangle, col, row);
-                    grid.add(fieldNumber, col, row);
+                    setRectangleGrid(row, col, gridNumber, fieldNumber, rectangle);
                 }
 
             }
     }
 
+    private void setRectangleGrid(int row, int col, int gridNumber, Label fieldNumber, Rectangle rectangle) {
+        setRectangleFill(rectangle, gridNumber);
+        rectangle.setStroke(Color.TRANSPARENT);
+        rectangle.setStrokeWidth(3);
+        rectangle.setArcWidth(30.0);
+        rectangle.setArcHeight(30.0);
+        grid.add(rectangle, col, row);
+        grid.add(fieldNumber, col, row);
+    }
+
     private void setRectangleFill(Rectangle rectangle, int gridNumber) {
         if (gridNumber == 0) {
-            rectangle.setFill(Color.WHITE);
+            rectangle.setFill(Color.web("#EBF5FB"));
         } else if (gridNumber == 2) {
-            rectangle.setFill(Color.LIGHTGRAY);
+            rectangle.setFill(Color.web("#D4E6F1"));
         } else if (gridNumber == 4) {
-            rectangle.setFill(Color.GRAY);
+            rectangle.setFill(Color.web("#A9CCE3"));
         } else if (gridNumber == 8) {
-            rectangle.setFill(Color.DARKGRAY);
+            rectangle.setFill(Color.web("#7FB3D5"));
         } else if (gridNumber == 16) {
-            rectangle.setFill(Color.LIGHTBLUE);
+            rectangle.setFill(Color.web("#5499C7"));
         } else if (gridNumber == 32) {
-            rectangle.setFill(Color.BLUE);
+            rectangle.setFill(Color.web("#2980B9"));
         } else if (gridNumber == 64) {
-            rectangle.setFill(Color.DARKBLUE);
+            rectangle.setFill(Color.web("#2471A3"));
         } else if (gridNumber == 128) {
-            rectangle.setFill(Color.YELLOW);
+            rectangle.setFill(Color.web("#1F618D"));
         } else if (gridNumber == 256) {
-            rectangle.setFill(Color.RED);
+            rectangle.setFill(Color.web("#1A5276"));
         } else if (gridNumber == 512) {
-            rectangle.setFill(Color.GREEN);
+            rectangle.setFill(Color.web("#154360"));
         } else if (gridNumber == 1024) {
-            rectangle.setFill(Color.BEIGE);
+            rectangle.setFill(Color.web("#0f2e42"));
         } else if (gridNumber == 2048) {
-            rectangle.setFill(Color.WHITE);
+            rectangle.setFill(Color.web("#F1C40F"));
         } else if (gridNumber > 2048) {
-            rectangle.setFill(Color.LIGHTGRAY);
+            rectangle.setFill(Color.RED);
         }
     }
 
@@ -93,6 +94,7 @@ public class Application extends javafx.application.Application implements NewGa
         Board board = new Board();
         GameMove gameMove = new GameMove();
         BorderPane borderPane = new BorderPane();
+        borderPane.setStyle("-fx-background-color: white");
         borderPane.setMaxSize(700, 700);
         borderPane.setMinSize(600, 600);
 
@@ -101,6 +103,7 @@ public class Application extends javafx.application.Application implements NewGa
         titleGame.setStyle("-fx-font-size: 40");
         BorderPane.setAlignment(titleGame, Pos.CENTER);
         stackPaneTop.getChildren().add(titleGame);
+        titleGame.getStyleClass().add("/com/game2048/gui/style.css");
 
         Button newGame = new Button();
         newGame.setText("New Game");
@@ -129,13 +132,13 @@ public class Application extends javafx.application.Application implements NewGa
         setBottom.getStyleClass().add("/com/game2048/gui/style.css");
 
         ColumnConstraints column1 = new ColumnConstraints();
-        column1.setPercentWidth(25);
+        column1.setPercentWidth(15);
         setBottom.getColumnConstraints().add(column1);
         ColumnConstraints column2 = new ColumnConstraints();
-        column2.setPercentWidth(25);
+        column2.setPercentWidth(15);
         setBottom.getColumnConstraints().add(column2);
         ColumnConstraints column3 = new ColumnConstraints();
-        column3.setPercentWidth(50);
+        column3.setPercentWidth(70);
         setBottom.getColumnConstraints().add(column3);
         GridPane.setColumnIndex(setBottom, 3);
         GridPane.setRowIndex(setBottom, 1);
@@ -151,6 +154,7 @@ public class Application extends javafx.application.Application implements NewGa
         GridPane.setMargin(loadSave, new Insets(10, 10, 10, 10));
 
         grid = new GridPane();
+        grid.getStylesheets().add("/com/game2048/gui/style.css");
         GridPane.setColumnIndex(grid, getSizeOfBoard());
         GridPane.setRowIndex(grid, getSizeOfBoard());
         GridPane.setHalignment(grid, HPos.CENTER);
@@ -169,6 +173,7 @@ public class Application extends javafx.application.Application implements NewGa
 
 
         Scene scene = new Scene(borderPane);
+        scene.getStylesheets().add("/com/game2048/gui/style.css");
         scene.setOnKeyPressed(e -> {
             if (!board.isEndOfGame()) {
                 if (e.getCode() == KeyCode.UP) {
@@ -205,7 +210,7 @@ public class Application extends javafx.application.Application implements NewGa
             if (saveBoard.length == 3 && getSizeOfBoard() == 3) {
                 board.setSavedBoard(saveBoard);
                 displayOnGrid(board);
-            } else if(saveBoard.length == 4 && getSizeOfBoard() == 4) {
+            } else if (saveBoard.length == 4 && getSizeOfBoard() == 4) {
                 board.setSavedBoard(saveBoard);
                 displayOnGrid(board);
             }
